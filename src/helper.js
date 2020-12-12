@@ -1,4 +1,5 @@
 import Langs from "./Lang/Langs";
+import Swal from 'sweetalert2'
 
 const Helper = {
     
@@ -10,6 +11,7 @@ export const Lang = (name) => {
 
     return Langs[lang][name] || name;
 }
+
 
 const PrivateFunc = {
     get_lang: () => localStorage.getItem('@lang') || 'es'

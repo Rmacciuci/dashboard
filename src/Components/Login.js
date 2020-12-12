@@ -1,12 +1,32 @@
 import React, { useState } from 'react';
+import Swal from 'sweetalert2';
 import LoginBackground from '../Assets/Images/background/login-register.jpg';
 import { Lang } from '../helper';
+
 export const Login = () => {
+    // Required Hooks
+    const [loading, setLoading]     = useState(false);
+    const [redirect, setRedirect]   = useState(false);
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [login_with_rrss, setLoginWithRRSS] = useState(false);
-
     const [recoveryForm, setRecoveryForm] = useState(false);
+
+
+    const PasswordRecovery = () => {
+        console.log("Password Recovery")
+    }
+
+    const SendLogin = (e) => {
+        e.preventDefault();
+        console.log("Login")
+        Swal.fire({
+            title: 'Login',
+            text: 'Error soga',
+            icon: 'question'
+        })
+    }
 
     return (
         <section id="wrapper">
@@ -46,7 +66,11 @@ export const Login = () => {
                             </div>
                             <div className="form-group text-center">
                                 <div className="col-xs-12 p-b-20">
-                                    <button className="btn btn-block btn-lg btn-info btn-rounded" type="submit">{Lang('Log In')}</button>
+                                    <button 
+                                        className="btn btn-block btn-lg btn-info btn-rounded" 
+                                        type="submit"
+                                        onClick={SendLogin}
+                                        >{Lang('Log In')}</button>
                                 </div>
                             </div>
                             {login_with_rrss &&
@@ -61,7 +85,8 @@ export const Login = () => {
                             }
                             <div className="form-group m-b-0">
                                 <div className="col-sm-12 text-center">
-                                    {Lang("Don't have an account?")} <a href="pages-register.html" className="text-info m-l-5"><b>{Lang('Sign Up')}</b></a>
+                                    {Lang("Don't have an account?")} 
+                                    <a href="pages-register.html" className="text-info m-l-5"><b>{Lang('Sign Up')}</b></a>
                                 </div>
                             </div>
                             </form>
@@ -80,7 +105,11 @@ export const Login = () => {
                                 </div>
                                 <div className="form-group text-center m-t-20">
                                     <div className="col-xs-12">
-                                        <button className="btn btn-primary btn-lg btn-block text-uppercase waves-effect waves-light" type="submit">{Lang('Reset')}</button>
+                                        <button 
+                                            className="btn btn-primary btn-lg btn-block text-uppercase waves-effect waves-light" 
+                                            type="submit"
+                                            onClick={PasswordRecovery}
+                                            >{Lang('Reset')}</button>
                                     </div>
                                 </div>
                             </form>
